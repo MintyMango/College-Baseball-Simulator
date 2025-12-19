@@ -199,11 +199,11 @@ public class GameSequence
     {
         switch(player.playerPos)
         {
-            case Player.position.F:
+            case Player.position.FB:
                 return player.name + " (1st)";
-            case Player.position.S:
+            case Player.position.SB:
                 return player.name + " (2nd)";
-            case Player.position.T:
+            case Player.position.TB:
                 return player.name + " (3rd)";
             default:
                 return player.name + " (" + player.playerPos + ")";

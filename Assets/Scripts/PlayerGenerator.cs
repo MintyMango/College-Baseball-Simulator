@@ -56,7 +56,7 @@ public class PlayerGenerator
         float trueWalk = generateWalkAvgValue(eyes);
         float trueSlug = generateTrueSlugging(eyes);
 
-        return new Player(name, number, homeState, p, trueBA, trueWalk, trueSlug, speed, eyes, fielding, strength);
+        return new Player(name, number, homeState, p, .500f, trueWalk, trueSlug, speed, eyes, fielding, strength);
     }
 
     public string generateName()

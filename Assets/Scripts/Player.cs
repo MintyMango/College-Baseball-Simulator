@@ -5,7 +5,7 @@ public class Player
     public string name;
     public int number;
     public string homeState;
-    public enum position {C, F, S, SS, T, RF, CF, LF, DH, SP, RP, CP};
+    public enum position {C, FB, SB, SS, TB, RF, CF, LF, DH, SP, RP, CP};
     public position playerPos;
 
     // Player Stats
@@ -37,6 +37,7 @@ public class Player
     private int homeruns;
     // private int steals; <- future stat
     private int putOuts;
+    private int gamesPlayed;
     // Game Stats----
 
     // Career Stats----
@@ -62,7 +63,7 @@ public class Player
 
     public Player(string name, int number, string homeState, position playerPos, float trueBattingAvg, float trueWalkAvg, float trueSluggingPercent, int speed, int eyes, int fielding, int strength)
     {
-        this.name = name;
+        this.name = name.Replace("\r", "");
         this.number = number;
         this.homeState = homeState;
         this.playerPos = playerPos;
@@ -73,6 +74,23 @@ public class Player
         this.eyes = eyes;
         this.fielding = fielding;
         this.strength = strength;
+
+
+        careerSingles = 0;
+        careerDoubles = 0;
+        careerTriples = 0;
+        careerHomeruns = 0;
+        careerPlateAppearances = 0;
+        careerPutOuts = 0;
+        careerStrikeOuts = 0;
+        careerWalks = 0;
+        careerRBIs = 0;
+        careerRuns = 0;
+    }
+
+    public int getOverall()
+    {
+        return (speed + eyes + fielding + strength) / 4;
     }
 
     public GameSequence.batResult atBat(Player pitcher)
@@ -176,6 +194,7 @@ public class Player
         walks = 0;
         RBIs = 0;
         runs = 0;
+        gamesPlayed++;
     }
 
     public void addRBI()
@@ -306,5 +325,15 @@ public class Player
     public int getCarrerRuns()
     {
         return careerRuns;
+    }
+
+    public int getCarrerStrikeOuts()
+    {
+        return careerStrikeOuts;
+    }
+
+    public int getGamesPlayed()
+    {
+        return gamesPlayed;
     }
 }

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
@@ -18,18 +19,22 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI inningCount;
     public TextMeshProUGUI scoreText;
 
+    public GameObject playButtons;
+    public GameObject backToMenu;
+
     private bool inSimulation;
     private Team homeTeam;
     private Team awayTeam;
-    void Start()
+
+    public void startGame(Team homeTeam,  Team awayTeam)
     {
         inSimulation = false;
 
         inningDisplay.text = "";
-    }
 
-    public void startGame(Team homeTeam,  Team awayTeam)
-    {
+        playButtons.SetActive(true);
+        backToMenu.SetActive(false);
+
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
 
@@ -44,10 +49,14 @@ public class GameController : MonoBehaviour
         if (currGame.getHomeScore() > currGame.getAwayScore())
         {
             inningDisplay.text += homeTeam.teamName + " beat " + awayTeam.teamName + " " + currGame.getHomeScore() + " - " + currGame.getAwayScore() + "!\n";
+            homeTeam.wins++;
+            awayTeam.losses++;
         }
         else
         {
             inningDisplay.text += awayTeam.teamName + " beat " + homeTeam.teamName + " " + currGame.getAwayScore() + " - " + currGame.getHomeScore() + "!\n";
+            homeTeam.losses++;
+            awayTeam.wins++;
         }
 
 
@@ -57,6 +66,9 @@ public class GameController : MonoBehaviour
 
         inningDisplay.text += formatMVPText(currGame.getMVP(homeTeam), homeTeam) + "\n";
         inningDisplay.text += formatMVPText(currGame.getMVP(awayTeam), awayTeam) + "\n";
+
+        playButtons.SetActive(false);
+        backToMenu.SetActive(true);
 
         currGame = null;
     }
@@ -85,7 +97,23 @@ public class GameController : MonoBehaviour
         return false;
     }
 
+    public void simulateGame()
+    {
 
+        while (!isGameOver())
+        {
+            if (!inSimulation)
+            {
+                clearUI();
+            }
+
+            currGame.simmulateInningHalf();
+        }
+
+        inSimulation = false;
+        updateBaseUI();
+        endGame();
+    }
 
     // Simulate the full half inning at once
     public void nextHalfInning()

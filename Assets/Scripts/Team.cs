@@ -11,6 +11,8 @@ public class Team
     public List<Player> lineup;
     public string teamName;
     public string teamLocation;
+    public int wins;
+    public int losses;
 
 
     private int startingPitcherIndex;
@@ -26,6 +28,8 @@ public class Team
         reliefPitchers = new List<Player>();
         lineup = new List<Player>();
         startingPitcherIndex = 0;
+        wins = 0;
+        losses = 0;
 
         validNumbers = new List<int>();
         for (int i = 0; i < 100; i++)
@@ -65,14 +69,20 @@ public class Team
 
     public Player getStartingPitcher()
     {
+        if (startingPitchers.Count == startingPitcherIndex)
+            startingPitcherIndex = 0;
+
         Player tempPlayer = startingPitchers[startingPitcherIndex];
+        tempPlayer.startGame();
         startingPitcherIndex++;
         return tempPlayer;
     }
 
     public Player getReliefPitcher()
     {
-        return reliefPitchers[UnityEngine.Random.Range(0, reliefPitchers.Count)];
+        Player temp = reliefPitchers[UnityEngine.Random.Range(0, reliefPitchers.Count)];
+        temp.startGame();
+        return temp;
     }
 
     public void generateLineup()
@@ -113,23 +123,27 @@ public class Team
         return lineup[lineupIndex++];
     }
 
-    public string getFourtyManRoster()
+    public Player[] getFourtyManRoster()
     {
-        string roster = "";
+        Player[] roster = new Player[40];
+        int tempIndex = 0;
 
         foreach(Player player in positionPlayers)
         {
-            roster += player.name + " (" + player.number + ")  - " + player.playerPos + "\n";
+            roster[tempIndex] = player;
+            tempIndex++;
         }
 
         foreach(Player player in startingPitchers)
         {
-            roster += player.name + " (" + player.number + ")  - " + player.playerPos + "\n";
+            roster[tempIndex] = player;
+            tempIndex++;
         }
 
-        foreach(Player player in reliefPitchers)
+        foreach (Player player in reliefPitchers)
         {
-            roster += player.name + " (" + player.number + ")  - " + player.playerPos + "\n";
+            roster[tempIndex] = player;
+            tempIndex++;
         }
 
         return roster;

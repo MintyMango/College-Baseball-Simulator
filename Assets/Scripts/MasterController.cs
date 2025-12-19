@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public class MasterController : MonoBehaviour
@@ -9,20 +10,36 @@ public class MasterController : MonoBehaviour
     public GameController gameController;
     public PlayerGenerator playerGenerator;
 
+    public TextMeshProUGUI oppInfoText;
+
+    public CanvasController canvasController;
+    public GameObject gameCanvas;
+    public GameObject mainCanvas;
+    public GameObject teamInfo;
+
+    public Team playerTeam;
+    private Team oppTeam;
+    private List<Team> AITeams;
+
     void Start()
     {
         playerGenerator = new PlayerGenerator();
 
-        Team homeTeam = new Team("Pandas", "UrMoms House");
-        Team awayTeam = new Team("Sharks", "The Ocean");
+        AITeams = new List<Team>();    
 
-        createFourtyManRoster(homeTeam);
-        createFourtyManRoster(awayTeam);
+        playerTeam = new Team("Pandas", "UrMoms House");
+        AITeams.Add(new Team("Sharks", "The Ocean"));
 
-        gameController.startGame(homeTeam, awayTeam);
+        createFourtyManRoster(playerTeam);
+        createFourtyManRoster(AITeams[0]);
+
+        oppTeam = AITeams[0];
+        getOppInfo(oppTeam);
+
 
         //test();
     }
+
 
     public void test()
     {
@@ -46,7 +63,22 @@ public class MasterController : MonoBehaviour
         }
     }
 
+    public void startNextGame()
+    {
+        gameController.startGame(playerTeam, oppTeam);
+        canvasController.swapCanvas(mainCanvas, gameCanvas);
+    }
 
+    public void gameFinished()
+    {
+        getOppInfo(oppTeam);
+        canvasController.swapCanvas(gameCanvas, mainCanvas);
+    }
+
+    public void getOppInfo(Team opp)
+    {
+        oppInfoText.text = "Next opponent: " + opp.teamName + " (" + opp.wins + "-" + opp.losses + ")";
+    }
 
     public void createFourtyManRoster(Team team)
     {
@@ -69,5 +101,15 @@ public class MasterController : MonoBehaviour
 
             team.addPlayer(temp);
         }
+    }
+
+    public void displayTeamInfo()
+    {
+        teamInfo.SetActive(true);
+    }
+
+    public void closeTeamInfo()
+    {
+        teamInfo.SetActive(false);
     }
 }
