@@ -31,8 +31,8 @@ public class MasterController : MonoBehaviour
         playerTeam = new Team("Pandas", "UrMoms House");
         AITeams.Add(new Team("Sharks", "The Ocean"));
 
-        createFourtyManRoster(playerTeam);
-        createFourtyManRoster(AITeams[0]);
+        createRoster(playerTeam);
+        createRoster(AITeams[0]);
 
         oppTeam = AITeams[0];
         getOppInfo(oppTeam);
@@ -81,9 +81,9 @@ public class MasterController : MonoBehaviour
         oppInfoText.text = "Next opponent: " + opp.teamName + " (" + opp.wins + "-" + opp.losses + ")";
     }
 
-    public void createFourtyManRoster(Team team)
+    public void createRoster(Team team)
     {
-        for (int i = 0; i < 30; i++)
+        for (int i = 0; i < 24; i++)
         {
             team.addPlayer(playerGenerator.generatePlayer(team, false));
         }

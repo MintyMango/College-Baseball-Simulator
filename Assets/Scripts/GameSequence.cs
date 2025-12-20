@@ -32,8 +32,8 @@ public class GameSequence
         outCount = 0;
         inningResults = "";
 
-        homePitcher = homeTeam.getStartingPitcher();
-        awayPitcher = awayTeam.getStartingPitcher();
+        homePitcher = homeTeam.getNextStartingPitcher();
+        awayPitcher = awayTeam.getNextStartingPitcher();
 
         homeTeam.generateLineup();
         awayTeam.generateLineup();

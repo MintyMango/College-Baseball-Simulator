@@ -13,6 +13,7 @@ public class Team
     public string teamLocation;
     public int wins;
     public int losses;
+    public int rosterSize;
 
 
     private int startingPitcherIndex;
@@ -30,6 +31,7 @@ public class Team
         startingPitcherIndex = 0;
         wins = 0;
         losses = 0;
+        rosterSize = 34;
 
         validNumbers = new List<int>();
         for (int i = 0; i < 100; i++)
@@ -68,6 +70,11 @@ public class Team
     }
 
     public Player getStartingPitcher()
+    {
+        return startingPitchers[startingPitcherIndex];
+    }
+
+    public Player getNextStartingPitcher()
     {
         if (startingPitchers.Count == startingPitcherIndex)
             startingPitcherIndex = 0;
@@ -123,9 +130,9 @@ public class Team
         return lineup[lineupIndex++];
     }
 
-    public Player[] getFourtyManRoster()
+    public Player[] getRoster()
     {
-        Player[] roster = new Player[40];
+        Player[] roster = new Player[rosterSize];
         int tempIndex = 0;
 
         foreach(Player player in positionPlayers)
@@ -147,5 +154,71 @@ public class Team
         }
 
         return roster;
+    }
+
+    public int getOverallRating()
+    {
+        int overall = 0;
+        int playerCount = 0;
+
+        foreach (Player player in positionPlayers)
+        {
+            overall += player.getOverall();
+            playerCount++;
+        }
+
+        foreach (Player player in startingPitchers)
+        {
+            overall += player.getOverall();
+            playerCount++;
+        }
+
+        foreach (Player player in reliefPitchers)
+        {
+            overall += player.getOverall();
+            playerCount++;
+        }
+
+        return overall / playerCount;
+    }
+
+    public int getOffenseRating()
+    {
+        int overall = 0;
+        int playerCount = 0;
+
+        foreach (Player player in positionPlayers)
+        {
+            overall += player.getOffenseRating();
+            playerCount++;
+        }
+
+        return overall / playerCount;
+    }
+
+    public int getDefenseRating()
+    {
+        int overall = 0;
+        int playerCount = 0;
+
+        foreach (Player player in positionPlayers)
+        {
+            overall += player.getDefenseRating();
+            playerCount++;
+        }
+
+        foreach (Player player in startingPitchers)
+        {
+            overall += player.getDefenseRating();
+            playerCount++;
+        }
+
+        foreach (Player player in reliefPitchers)
+        {
+            overall += player.getDefenseRating();
+            playerCount++;
+        }
+
+        return overall / playerCount;
     }
 }

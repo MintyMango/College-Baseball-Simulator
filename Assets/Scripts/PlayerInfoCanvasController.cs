@@ -8,7 +8,17 @@ public class PlayerInfoCanvasController : MonoBehaviour
     public MasterController masterController;
     public GameObject playerEntry;
 
+    private bool listFilled = false;
     private Team playerTeam;
+
+    // Team Info GUI
+    public TextMeshProUGUI teamName;
+    public TextMeshProUGUI teamLocation;
+    public TextMeshProUGUI overallRating;
+    public TextMeshProUGUI offenseRating;
+    public TextMeshProUGUI defenseRating;
+
+
 
     // Player Info GUI Variables
     public TextMeshProUGUI playerName;
@@ -51,7 +61,10 @@ public class PlayerInfoCanvasController : MonoBehaviour
     void Start()
     {
         playerTeam = masterController.playerTeam;
-        populateList(playerTeam);
+        if (!listFilled)         
+            populateList();
+
+        setTeamInfo(playerTeam);
     }
 
     private void OnEnable()
@@ -61,14 +74,14 @@ public class PlayerInfoCanvasController : MonoBehaviour
             child.updateText();
     }
 
-    public void populateList(Team team)
+    // Initial setup for the 34 roster spots
+    public void populateList()
     {
         float offset = (this.GetComponent<RectTransform>().rect.height / 2);
-        int runningCount = 1;
 
-        foreach (Player player in team.getFourtyManRoster())
+        // 34 is the current roster cap on NCAA baseball teams
+        for (int i = 0; i < 34; i++)
         {
-
             GameObject temp = Instantiate(playerEntry, this.transform);
             
             RectTransform rt = temp.GetComponent<RectTransform>();
@@ -76,16 +89,46 @@ public class PlayerInfoCanvasController : MonoBehaviour
             offset -= temp.GetComponent<RectTransform>().rect.height;
 
             rt.localPosition = new Vector2(0, offset);
+        }
 
-            temp.GetComponent<PlayerDataController>().updateText(runningCount, player.name, player.playerPos, player.getOverall(), player.getGamesPlayed(), 
+        listFilled = true;
+    }
+
+    public void setTeamInfo(Team team)
+    {
+        teamName.text = team.teamName;
+        teamLocation.text = team.teamLocation;
+        overallRating.text = "Overall: " + team.getOverallRating();
+        offenseRating.text = "Offense: " + team.getOffenseRating();
+        defenseRating.text = "Defense: " + team.getDefenseRating();
+
+    }
+
+    public void fillTeamList()
+    {
+        if (!listFilled)
+            populateList();
+
+        Team team = masterController.playerTeam;
+        for (int i = 0; i < 34; i++)
+        {
+
+            Transform temp = this.transform.GetChild(i);
+            temp.gameObject.SetActive(true);
+            Player player = team.getRoster()[i];
+
+
+            temp.GetComponent<PlayerDataController>().updateText(i, player.name, player.getPosition(), player.getOverall(), player.getGamesPlayed(),
                 player.getCareerBA(), player.getCareerWalks(), player.getCareerSO(), player.getCareerRuns(),
                 team.lineup.Contains(player));
-            runningCount++;
 
             temp.GetComponent<PlayerDataController>().player = player;
 
             temp.GetComponentInChildren<Button>().onClick.AddListener(() => displayPlayer(player));
+
         }
+
+        masterController.openTeamInfo();
     }
 
     public void displayPlayer(Player player)
@@ -129,4 +172,37 @@ public class PlayerInfoCanvasController : MonoBehaviour
         fielding.text = "Fielding: " + player.fielding;
     }
 
+    public void displayLineup()
+    {
+        if (!listFilled)
+            populateList();
+
+        Team team = masterController.playerTeam;
+        masterController.teamInfo.SetActive(true);
+
+        for (int i = 0; i < 34; i++)
+        {
+            Transform temp = this.transform.GetChild(i);
+
+            if (i <= 9)
+            {
+                Player player = null;
+
+                if (i == 9)
+                    player = team.getStartingPitcher();
+                else
+                    player = team.lineup[i];
+
+                temp.GetComponent<PlayerDataController>().updateText(player.number, player.name, player.getPosition(), player.getOverall(), player.getGamesPlayed(),
+                   player.getCareerBA(), player.getCareerWalks(), player.getCareerSO(), player.getCareerRuns(),
+                   team.lineup.Contains(player));
+
+                temp.gameObject.SetActive(true);
+            }
+            else
+            {
+                temp.gameObject.SetActive(false);
+            }
+        }
+    }
 }

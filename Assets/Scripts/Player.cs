@@ -93,6 +93,16 @@ public class Player
         return (speed + eyes + fielding + strength) / 4;
     }
 
+    public int getDefenseRating()
+    {
+        return (speed + fielding) / 2;
+    }
+
+    public int getOffenseRating()
+    {
+        return (speed + eyes + strength) / 3;
+    }
+
     public GameSequence.batResult atBat(Player pitcher)
     {
         // TODO: Incorporate pitchers stats for the result
@@ -195,6 +205,21 @@ public class Player
         RBIs = 0;
         runs = 0;
         gamesPlayed++;
+    }
+
+    public string getPosition()
+    {
+        switch (playerPos)
+        {
+            case position.FB:
+                return "1B";
+            case position.SB:
+                return "2B";
+            case position.TB:
+                return "3B";
+            default:
+                return playerPos.ToString();
+        }
     }
 
     public void addRBI()
