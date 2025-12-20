@@ -163,34 +163,39 @@ public class GameSequence
 
             case batResult.StrikeOut:
                 outCount++;
-                pitcher.field();
+                pitcher.strikeOut();
                 inningResults += formatPlayerString(batter) + " strikes out to " + formatPlayerString(pitcher) + "!\n";
                 inningResults += outCount + " outs.\n";
                 break;
 
             case batResult.Walk:
+                pitcher.walk();
                 inningResults += formatPlayerString(batter) + " walks!\n";
-                advanceRunners(batter, 1, offense == homeTeam);
+                advanceRunners(batter, 1, offense == homeTeam, pitcher);
                 break;
 
             case batResult.Single:
+                pitcher.singleHit();
                 inningResults += formatPlayerString(batter) + " hits a single!\n";
-                advanceRunners(batter, 1, offense == homeTeam);
+                advanceRunners(batter, 1, offense == homeTeam, pitcher);
                 break;
 
             case batResult.Double:
+                pitcher.doubleHit();
                 inningResults += formatPlayerString(batter) + " hits a double!!\n";
-                advanceRunners(batter, 2, offense == homeTeam);
+                advanceRunners(batter, 2, offense == homeTeam, pitcher);
                 break;
 
             case batResult.Triple:
+                pitcher.tripleHit();
                 inningResults += formatPlayerString(batter) + " hits a triple!!!\n";
-                advanceRunners(batter, 3, offense == homeTeam);
+                advanceRunners(batter, 3, offense == homeTeam, pitcher);
                 break;
 
             case batResult.HomeRun:
+                pitcher.homerunHit();
                 inningResults += formatPlayerString(batter) + " hits a homerun!!!!\n";
-                advanceRunners(batter, 4, offense == homeTeam);
+                advanceRunners(batter, 4, offense == homeTeam, pitcher);
                 break;
         }
     }
@@ -211,7 +216,7 @@ public class GameSequence
         
     }
 
-    public void advanceRunners(Player newRunner, int baseAmount, bool homeTeamUp)
+    public void advanceRunners(Player newRunner, int baseAmount, bool homeTeamUp, Player pitcher)
     {
         baseRunners[0] = newRunner;
 
@@ -241,6 +246,7 @@ public class GameSequence
                         inningResults += baseRunners[i].name + " scores for " + awayTeam.teamName + "!\n";
                     }
 
+                    pitcher.addRun();
                     baseRunners[i].addRun();
                     baseRunners[i] = null;
                 }

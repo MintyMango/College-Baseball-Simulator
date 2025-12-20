@@ -221,4 +221,397 @@ public class Team
 
         return overall / playerCount;
     }
+
+
+    public int getGamesPlayed()
+    {
+        return wins + losses;
+    }
+
+    public int getTotalOffABs()
+    {
+        int overall = 0;
+
+        foreach (Player player in positionPlayers)
+        {
+            overall += player.getCareerPA();
+        }
+
+        return overall;
+    }
+
+    public int getTotalOffHits()
+    {
+        int overall = 0;
+
+        foreach (Player player in positionPlayers)
+        {
+            overall += player.getCareerHits();
+        }
+
+        return overall;
+    }
+
+    public float getTotalOffOBP()
+    {
+        float overall = 0f;
+        int playerCount = 0;
+
+        foreach (Player player in positionPlayers)
+        {
+            overall += player.getCareerOBP();
+            playerCount++;
+        }
+
+        return overall / (float)playerCount;
+    }
+
+    public float getTotalOffBA()
+    {
+        float overall = 0f;
+        int playerCount = 0;
+
+        foreach (Player player in positionPlayers)
+        {
+            overall += player.getCareerBA();
+            playerCount++;
+        }
+
+        return overall / (float)playerCount;
+    }
+
+    public float getTotalOffSLG()
+    {
+        float overall = 0f;
+        int playerCount = 0;
+
+        foreach (Player player in positionPlayers)
+        {
+            overall += player.getCareerSlugging();
+            playerCount++;
+        }
+
+        return overall / (float)playerCount;
+    }
+
+    public int getTotalOffSO()
+    {
+        int overall = 0;
+
+        foreach (Player player in positionPlayers)
+        {
+            overall += player.getCareerSO();
+        }
+
+        return overall;
+    }
+
+    public int getTotalOffBB()
+    {
+        int overall = 0;
+
+        foreach (Player player in positionPlayers)
+        {
+            overall += player.getCareerWalks();
+        }
+
+        return overall;
+    }
+
+    public int getTotalOffDoubles()
+    {
+        int overall = 0;
+
+        foreach (Player player in positionPlayers)
+        {
+            overall += player.getCareerDoubles();
+        }
+
+        return overall;
+    }
+
+    public int getTotalOffTriples()
+    {
+        int overall = 0;
+
+        foreach (Player player in positionPlayers)
+        {
+            overall += player.getCareerTriples();
+        }
+
+        return overall;
+    }
+
+    public int getTotalOffHomeRuns()
+    {
+        int overall = 0;
+
+        foreach (Player player in positionPlayers)
+        {
+            overall += player.getCareerHomeRuns();
+        }
+
+        return overall;
+    }
+
+    public int getTotalOffRBIs()
+    {
+        int overall = 0;
+
+        foreach (Player player in positionPlayers)
+        {
+            overall += player.getCareerRBI();
+        }
+
+        return overall;
+    }
+
+    public int getTotalOffTB()
+    {
+        int overall = 0;
+
+        foreach (Player player in positionPlayers)
+        {
+            overall += player.getCareerTotalBases();
+        }
+
+        return overall;
+    }
+
+    public int getTotalOffRuns()
+    {
+        int overall = 0;
+
+        foreach (Player player in positionPlayers)
+        {
+            overall += player.getCareerRuns();
+        }
+
+        return overall;
+    }
+
+
+
+
+    public int getTotalDefABs()
+    {
+        int overall = 0;
+
+        foreach (Player player in startingPitchers)
+        {
+            overall += player.getCareerPA();
+        }
+        foreach (Player player in reliefPitchers)
+        {
+            overall += player.getCareerPA();
+        }
+
+        return overall;
+    }
+
+    public int getTotalDefHits()
+    {
+        int overall = 0;
+
+        foreach (Player player in startingPitchers)
+        {
+            overall += player.getCareerHits();
+        }
+        foreach (Player player in reliefPitchers)
+        {
+            overall += player.getCareerHits();
+        }
+
+        return overall;
+    }
+
+    public float getTotalDefOBP()
+    {
+        float overall = 0f;
+        int playerCount = 0;
+
+        foreach (Player player in startingPitchers)
+        {
+            overall += player.getCareerOBP();
+            playerCount++;
+        }
+        foreach (Player player in reliefPitchers)
+        {
+            overall += player.getCareerOBP();
+            playerCount++;
+        }
+
+        return overall / (float)playerCount;
+    }
+
+    public float getTotalDefBA()
+    {
+        float overall = 0f;
+        int playerCount = 0;
+
+        foreach (Player player in startingPitchers)
+        {
+            overall += player.getCareerBA();
+            playerCount++;
+        }
+        foreach (Player player in reliefPitchers)
+        {
+            overall += player.getCareerBA();
+            playerCount++;
+        }
+
+        return overall / (float)playerCount;
+    }
+
+    public float getTotalDefSLG()
+    {
+        float overall = 0f;
+        int playerCount = 0;
+
+        foreach (Player player in startingPitchers)
+        {
+            overall += player.getCareerSlugging();
+            playerCount++;
+        }
+        foreach (Player player in reliefPitchers)
+        {
+            overall += player.getCareerSlugging();
+            playerCount++;
+        }
+
+        return overall / (float)playerCount;
+    }
+
+    public int getTotalDefSO()
+    {
+        int overall = 0;
+
+        foreach (Player player in startingPitchers)
+        {
+            overall += player.getCareerSO();
+        }
+        foreach (Player player in reliefPitchers)
+        {
+            overall += player.getCareerSO();
+        }
+
+        return overall;
+    }
+
+    public int getTotalDefBB()
+    {
+        int overall = 0;
+
+        foreach (Player player in startingPitchers)
+        {
+            overall += player.getCareerWalks();
+        }
+        foreach (Player player in reliefPitchers)
+        {
+            overall += player.getCareerWalks();
+        }
+
+        return overall;
+    }
+
+    public int getTotalDefDoubles()
+    {
+        int overall = 0;
+
+        foreach (Player player in startingPitchers)
+        {
+            overall += player.getCareerDoubles();
+        }
+        foreach (Player player in reliefPitchers)
+        {
+            overall += player.getCareerDoubles();
+        }
+
+        return overall;
+    }
+
+    public int getTotalDefTriples()
+    {
+        int overall = 0;
+
+        foreach (Player player in startingPitchers)
+        {
+            overall += player.getCareerTriples();
+        }
+        foreach (Player player in reliefPitchers)
+        {
+            overall += player.getCareerTriples();
+        }
+
+        return overall;
+    }
+
+    public int getTotalDefHomeRuns()
+    {
+        int overall = 0;
+
+        foreach (Player player in startingPitchers)
+        {
+            overall += player.getCareerHomeRuns();
+        }
+        foreach (Player player in reliefPitchers)
+        {
+            overall += player.getCareerHomeRuns();
+        }
+
+        return overall;
+    }
+
+    public int getTotalDefRBIs()
+    {
+        int overall = 0;
+
+        foreach (Player player in startingPitchers)
+        {
+            overall += player.getCareerRBI();
+        }
+        foreach (Player player in reliefPitchers)
+        {
+            overall += player.getCareerRBI();
+        }
+
+        return overall;
+    }
+
+    public int getTotalDefTB()
+    {
+        int overall = 0;
+
+        foreach (Player player in startingPitchers)
+        {
+            overall += player.getCareerTotalBases();
+        }
+        foreach (Player player in reliefPitchers)
+        {
+            overall += player.getCareerTotalBases();
+        }
+
+        return overall;
+    }
+
+    public int getTotalDefRuns()
+    {
+        int overall = 0;
+
+        foreach (Player player in startingPitchers)
+        {
+            overall += player.getCareerRuns();
+        }
+        foreach (Player player in reliefPitchers)
+        {
+            overall += player.getCareerRuns();
+        }
+
+        return overall;
+    }
+
+    public float getDefERA()
+    {
+        return getTotalDefRuns() / (9 * getGamesPlayed());
+    }
 }

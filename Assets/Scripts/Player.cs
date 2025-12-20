@@ -108,13 +108,15 @@ public class Player
         // TODO: Incorporate pitchers stats for the result
 
         plateAppearances++;
-        float result = Random.value;
+        // Generate a float between 1.000 and 0.000
+        float result = UnityEngine.Random.Range(0, 1000) / 1000f;
         if (result <= trueBattingAvg)
         {
 
+            // Generate a float between 1.000 and 0.000
             if (UnityEngine.Random.Range(0, 1000) / 1000f <= trueSluggingPercent)
             {
-                // Number between 1-0
+                // Float between 1-0
                 float temp = rollExtraBases();
 
                 if (temp < 0.40f)
@@ -122,7 +124,7 @@ public class Player
                     doubles++;
                     return GameSequence.batResult.Double;
                 }
-                else if (temp < 0.70f)
+                else if (temp < 0.60f)
                 {
                     triples++;
                     return GameSequence.batResult.Triple;
@@ -136,7 +138,6 @@ public class Player
             }
             else
             {
-                // Change this to determine what type of hit it is
                 singles++;
                 return GameSequence.batResult.Single;
             }   
@@ -419,4 +420,39 @@ public class Player
     {
         return (singles + (doubles * 2) + (triples * 3) + (homeruns * 4));
     }
+
+
+
+    // Pitcher helper methods
+    public void strikeOut()
+    {
+        strikeOuts++;
+    }
+
+    public void walk()
+    {
+        walks++;
+    }
+
+    public void singleHit()
+    {
+        singles++;
+    }
+
+    public void doubleHit()
+    {
+        doubles++;
+    }
+
+    public void tripleHit()
+    {
+        triples++;
+    }
+
+    public void homerunHit()
+    {
+        homeruns++;
+    }
+
+    
 }

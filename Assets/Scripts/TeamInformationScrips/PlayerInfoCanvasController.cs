@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerInfoCanvasController : MonoBehaviour
 {
     public MasterController masterController;
+    public TeamStatController teamStatController;
     public GameObject playerEntry;
 
     private bool listFilled = false;
@@ -56,22 +57,19 @@ public class PlayerInfoCanvasController : MonoBehaviour
     public TextMeshProUGUI gRBI;
     public TextMeshProUGUI gTB;
 
-
-
-    void Start()
-    {
-        playerTeam = masterController.playerTeam;
-        if (!listFilled)         
-            populateList();
-
-        setTeamInfo(playerTeam);
-    }
-
     private void OnEnable()
     {
+        playerTeam = masterController.playerTeam;
+        if (!listFilled)
+            populateList();
+
         // Update Player Info
         foreach (PlayerDataController child in this.GetComponentsInChildren<PlayerDataController>())
             child.updateText();
+
+        setTeamInfo(playerTeam);
+        teamStatController.updateTeamOffStats(playerTeam);
+        teamStatController.updateTeamDefStats(playerTeam);
     }
 
     // Initial setup for the 34 roster spots

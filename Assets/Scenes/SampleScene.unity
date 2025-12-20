@@ -4608,9 +4608,37 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1247694037}
+    - target: {fileID: 4653636404353269495, guid: 965d278a22c36e842aadee6d4ba1c1c4, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4653636404353269495, guid: 965d278a22c36e842aadee6d4ba1c1c4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4653636404353269495, guid: 965d278a22c36e842aadee6d4ba1c1c4, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.45859873
+      objectReference: {fileID: 0}
+    - target: {fileID: 5746144622914240538, guid: 965d278a22c36e842aadee6d4ba1c1c4, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5746144622914240538, guid: 965d278a22c36e842aadee6d4ba1c1c4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.99610364
+      objectReference: {fileID: 0}
+    - target: {fileID: 5746144622914240538, guid: 965d278a22c36e842aadee6d4ba1c1c4, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.8641373
+      objectReference: {fileID: 0}
     - target: {fileID: 9138959886210043394, guid: 965d278a22c36e842aadee6d4ba1c1c4, type: 3}
       propertyPath: m_Name
       value: TeamInfoCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138959886210043394, guid: 965d278a22c36e842aadee6d4ba1c1c4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
