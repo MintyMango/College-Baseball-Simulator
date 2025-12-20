@@ -30,7 +30,8 @@ public class GameController : MonoBehaviour
     {
         inSimulation = false;
 
-        inningDisplay.text = "";
+        if(inningDisplay != null) 
+            inningDisplay.text = "";
 
         playButtons.SetActive(true);
         backToMenu.SetActive(false);
@@ -69,6 +70,9 @@ public class GameController : MonoBehaviour
 
         playButtons.SetActive(false);
         backToMenu.SetActive(true);
+
+        homeTeam.endGame();
+        awayTeam.endGame();
 
         currGame = null;
     }
@@ -210,9 +214,9 @@ public class GameController : MonoBehaviour
 
     public string formatMVPText(Player mvp, Team team)
     {
-        string mvpText = team.teamName + "'s MVP: " + mvp.name + ": ";
+        string mvpText = team.teamName + "'s MVP: " + mvp.name + ": \n";
             
-        mvpText += mvp.getGameHits() + " - " + mvp.getGamePAs();
+        mvpText += mvp.getGameHits() + " - " + (mvp.getGamePAs() - mvp.getGameWalks());
 
         if (mvp.getGameSingles() > 0)
         {
@@ -229,6 +233,10 @@ public class GameController : MonoBehaviour
         if (mvp.getGameHomeRuns() > 0)
         {
             mvpText += ", " + mvp.getGameHomeRuns() + " HR";
+        }
+        if (mvp.getGameWalks() > 0)
+        {
+            mvpText += ", " + mvp.getGameWalks() + " BB";
         }
         if (mvp.getGameRBI() > 0)
         {

@@ -16,6 +16,7 @@ public class MasterController : MonoBehaviour
     public GameObject gameCanvas;
     public GameObject mainCanvas;
     public GameObject teamInfo;
+    public GameObject playerInfo;
 
     public Team playerTeam;
     private Team oppTeam;
@@ -103,7 +104,7 @@ public class MasterController : MonoBehaviour
         }
     }
 
-    public void displayTeamInfo()
+    public void openTeamInfo()
     {
         teamInfo.SetActive(true);
     }
@@ -111,5 +112,15 @@ public class MasterController : MonoBehaviour
     public void closeTeamInfo()
     {
         teamInfo.SetActive(false);
+    }
+
+    public void openPlayerInfo()
+    {
+        playerInfo.SetActive(true);
+    }
+
+    public void closePlayerInfo()
+    {
+        playerInfo.SetActive(false);
     }
 }

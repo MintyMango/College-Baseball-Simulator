@@ -221,6 +221,7 @@ public class GameSequence
             try
             {
                 baseRunners[i + baseAmount] = baseRunners[i];
+                baseRunners[i] = null;
             }
             // If we get an index out of bounds error then the base runner returned home
             catch

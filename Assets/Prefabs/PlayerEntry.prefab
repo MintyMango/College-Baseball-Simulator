@@ -1010,7 +1010,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3033181885188789808}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -7037.9995}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1022,7 +1022,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -294.03824, y: -367.98962}
+  m_AnchoredPosition: {x: 0.5132, y: -1.00822}
   m_SizeDelta: {x: 1245.6, y: 118.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &9186696998724865974
@@ -1043,9 +1043,9 @@ MonoBehaviour:
   overallText: {fileID: 3390663164968514504}
   gamesPlayedText: {fileID: 2885189916568580849}
   battingAverageText: {fileID: 2887386769823814841}
-  walkAverageText: {fileID: 3541445784483794709}
+  walksText: {fileID: 3541445784483794709}
   strikeOutsText: {fileID: 501351052421479407}
-  putOutsText: {fileID: 1496063169787742491}
+  runsText: {fileID: 1496063169787742491}
   inLineupText: {fileID: 9045669717522388751}
 --- !u!1 &4336210766995589604
 GameObject:

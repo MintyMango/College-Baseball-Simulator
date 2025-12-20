@@ -107,12 +107,12 @@ public class Player
                 // Number between 1-0
                 float temp = rollExtraBases();
 
-                if (temp < 0.60f)
+                if (temp < 0.40f)
                 {
                     doubles++;
                     return GameSequence.batResult.Double;
                 }
-                else if (temp < 0.90f)
+                else if (temp < 0.70f)
                 {
                     triples++;
                     return GameSequence.batResult.Triple;
@@ -160,7 +160,7 @@ public class Player
         {
             // 50 is the average for the stat thus the player gets benefits if they are above average
             // or penalized if they are below average
-            runningTotal += UnityEngine.Random.Range(0, 1) * (strength / 50f);
+            runningTotal += (UnityEngine.Random.Range(0, 100) / 100f) * (strength / 50f);
         }
 
         // Return a normalized value after generating a random number 20 times
@@ -272,12 +272,12 @@ public class Player
         return runs;
     }
 
-    public float getCareerHits()
+    public int getCareerHits()
     {
         return (careerSingles + careerDoubles + careerTriples + careerHomeruns);
     }
 
-    public float getCareerWalks()
+    public int getCareerWalks()
     {
         return careerWalks;
     }
@@ -317,17 +317,17 @@ public class Player
         return careerPutOuts;
     }
 
-    public int getCarrerRBI()
+    public int getCareerRBI()
     {
         return careerRBIs;
     }
 
-    public int getCarrerRuns()
+    public int getCareerRuns()
     {
         return careerRuns;
     }
 
-    public int getCarrerStrikeOuts()
+    public int getCareerStrikeOuts()
     {
         return careerStrikeOuts;
     }
@@ -335,5 +335,63 @@ public class Player
     public int getGamesPlayed()
     {
         return gamesPlayed;
+    }
+
+    public float getCareerOBP()
+    {
+        if (careerPlateAppearances == 0)
+            return 0;
+
+        return (getCareerHits() + careerWalks) / (float)careerPlateAppearances; 
+    }
+
+    public float getGameOBP()
+    {
+        if (plateAppearances == 0)
+            return 0;
+
+        return (getGameHits() + walks) / (float)plateAppearances;
+    }
+
+    public float getCareerSlugging()
+    {
+        if (getCareerHits() == 0)
+            return 0;
+
+        return (careerSingles + (careerDoubles * 2) + (careerTriples * 3) + (careerHomeruns * 4)) / (float)getCareerHits();
+    }
+
+    public float getGameSlugging()
+    {
+        if (getGameHits() == 0)
+            return 0;
+
+        return (singles + (doubles * 2) + (triples * 3) + (homeruns * 4)) / (float)getGameHits();
+    }
+
+    public float getCareerBA()
+    {
+        if (careerPlateAppearances == 0)
+            return 0;
+
+        return getCareerHits() / (float)careerPlateAppearances;
+    }
+
+    public float getGameBA()
+    {
+        if (plateAppearances == 0)
+            return 0;
+
+        return getGameHits() / (float)plateAppearances;
+    }
+
+    public int getCareerTotalBases()
+    {
+        return (careerSingles + (careerDoubles * 2) + (careerTriples * 3) + (careerHomeruns * 4));
+    }
+
+    public int getGameTotalBases()
+    {
+        return (singles + (doubles * 2) + (triples * 3) + (homeruns * 4));
     }
 }
