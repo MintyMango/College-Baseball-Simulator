@@ -36,6 +36,7 @@ public class Team
         startingPitcherIndex = 0;
         wins = 0;
         losses = 0;
+        // 34 is the current roster cap on NCAA baseball teams
         rosterSize = 34;
 
         //this.rival = rival;
@@ -121,6 +122,21 @@ public class Team
 
         }
         **/
+    }
+
+    public int getPositionPlayerCount()
+    {
+        int count = 0;
+
+        foreach (Player player in getRoster())
+        {
+            if (player.playerPos == Player.position.SP || player.playerPos == Player.position.CP)
+                continue;
+
+            count++;
+        }
+
+        return count;
     }
 
     public void updateLineup(List<Player> lineup)

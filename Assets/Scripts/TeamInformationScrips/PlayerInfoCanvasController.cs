@@ -77,7 +77,6 @@ public class PlayerInfoCanvasController : MonoBehaviour
     {
         float offset = (this.GetComponent<RectTransform>().rect.height / 2);
 
-        // 34 is the current roster cap on NCAA baseball teams
         for (int i = 0; i < 34; i++)
         {
             GameObject temp = Instantiate(playerEntry, this.transform);
@@ -108,7 +107,7 @@ public class PlayerInfoCanvasController : MonoBehaviour
             populateList();
 
         Team team = masterController.playerTeam;
-        for (int i = 0; i < 34; i++)
+        for (int i = 0; i < team.rosterSize; i++)
         {
 
             Transform temp = this.transform.GetChild(i);

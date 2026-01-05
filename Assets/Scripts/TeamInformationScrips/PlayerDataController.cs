@@ -70,4 +70,9 @@ public class PlayerDataController: MonoBehaviour
             strikeOutsText.text = player.getCareerSO().ToString();
         }
     }
+
+    public void setPlayer(Player newPlayer)
+    {
+        player = newPlayer;
+    }
 }
