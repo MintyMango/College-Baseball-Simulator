@@ -1,0 +1,100 @@
+Alabama Institute of Technology,Iron Hawks,North Alabama,Frontier Plains Conference
+Borealis University,Aurora Wolves,North Alaska,Aurora Athletic Conference
+Red Mesa University,Sand Lynx,North Arizona,Frontier Plains Conference
+Ozark Ridge College,Timber Owls,North Arkansas,Frontier Plains Conference
+Redwood State University,Grove Guardians,North California,Aurora Athletic Conference
+Front Range Institute,Peak Rams,North Colorado,Frontier Plains Conference
+Charter Oak University,Stone Stags,North Connecticut,Atlantic Crest Conference
+Brandywine Tech,Copper Foxes,North Delaware,Atlantic Crest Conference
+Panhandle State,Storm Gators,North Florida,Atlantic Crest Conference
+Blue Ridge University,Ridge Bears,North Georgia,Atlantic Crest Conference
+Mauna Kea Institute,Lava Hawks,North Hawaii,Aurora Athletic Conference
+Clearwater University,Silver Otters,North Idaho,Aurora Athletic Conference
+Prairie Lakes University,Frost Cranes,North Illinois,Aurora Athletic Conference
+Hoosier Valley Tech,Steel Badgers,North Indiana,Aurora Athletic Conference
+Drift Plain University,Wind Buffalo,North Iowa,Frontier Plains Conference
+Flint Hills Institute,Flint Stallions,North Kansas,Frontier Plains Conference
+Bluegrass State,Silver Thoroughbreds,North Kentucky,Atlantic Crest Conference
+Red River University,Bayou Wolves,North Louisiana,Frontier Plains Conference
+Pine Crown University,Frost Lynx,North Maine,Aurora Athletic Conference
+Chesapeake Tech,Tidebreakers,North Maryland,Atlantic Crest Conference
+Merrimack Valley University,Iron Weavers,North Massachusetts,Aurora Athletic Conference
+Superior Coast College,Ice Tridents,North Michigan,Aurora Athletic Conference
+Arrowhead State,Boreal Wolves,North Minnesota,Frontier Plains Conference
+Hill Country University,Slate Cougars,North Mississippi,Frontier Plains Conference
+Gateway Plains Tech,Iron Archers,North Missouri,Frontier Plains Conference
+Glacier Plains University,Whitehorn Rams,North Montana,Aurora Athletic Conference
+Sandhills State,Prairie Phantoms,North Nebraska,Frontier Plains Conference
+Great Basin University,Frost Scorpions,North Nevada,Aurora Athletic Conference
+White Mountain Institute,Granite Lynx,North New Hampshire,Aurora Athletic Conference
+Highlands Tech,Iron Jackals,North New Jersey,Atlantic Crest Conference
+Sangre Crest University,Crimson Condors,North New Mexico,Frontier Plains Conference
+Adirondack Institute,Frost Sentinels,North New York,Aurora Athletic Conference
+Blue Ridge State,Summit Wildcats,North North Carolina,Atlantic Crest Conference
+Red Tundra University,Ice Wardens,North North Dakota,Aurora Athletic Conference
+Lake Erie Institute,Steel Navigators,North Ohio,Aurora Athletic Conference
+Cimarron Plains University,Dust Mustangs,North Oklahoma,Frontier Plains Conference
+Cascadia University,Rain Owls,North Oregon,Aurora Athletic Conference
+Allegheny Tech,Slate Minotaurs,North Pennsylvania,Atlantic Crest Conference
+Ocean State Institute,Salt Wardens,North Rhode Island,Atlantic Crest Conference
+Piedmont Ridge University,Ember Falcons,North South Carolina,Atlantic Crest Conference
+Badlands State,Stone Coyotes,North South Dakota,Frontier Plains Conference
+Volunteer Ridge University,Smoky Cougars,North Tennessee,Atlantic Crest Conference
+Panhandle Plains Tech,Wind Wranglers,North Texas,Frontier Plains Conference
+Wasatch Institute,Snow Wardens,North Utah,Aurora Athletic Conference
+Green Summit University,Pine Sentinels,North Vermont,Aurora Athletic Conference
+Blue Ridge Tech,Iron Cavaliers,North Virginia,Atlantic Crest Conference
+Salish Coast University,Storm Orcas,North Washington,Aurora Athletic Conference
+Monongahela Institute,Coal Griffins,North West Virginia,Atlantic Crest Conference
+Superior Pines University,Frost Badgers,North Wisconsin,Aurora Athletic Conference
+Wind River State,Glacier Hawks,North Wyoming,Aurora Athletic Conference
+Alabama Coastal College,Tide Serpents,South Alabama,Sunspire Conference
+Pacific Fjord College,Glacier Seals,South Alaska,Sunspire Conference
+Sonoran Plains College,Fire Runners,South Arizona,Sunspire Conference
+Delta River University,River Kings,South Arkansas,Atlantic Crest Conference
+Pacific Crest College,Solar Rays,South California,Sunspire Conference
+San Juan Valley College,Thunder Bison,South Colorado,Sunspire Conference
+Long Sound College,Harbor Falcons,South Connecticut,Aurora Athletic Conference
+Cape Henlopen College,Dune Sharks,South Delaware,Sunspire Conference
+Everglade Coast College,Mangrove Panthers,South Florida,Sunspire Conference
+Savannah Plains College,Gold Herons,South Georgia,Sunspire Conference
+Kona Shore College,Coral Turtles,South Hawaii,Sunspire Conference
+Snake River College,Canyon Vipers,South Idaho,Frontier Plains Conference
+Lincoln Prairie College,Prairie Hawks,South Illinois,Atlantic Crest Conference
+Ohio Ridge College,Red Comets,South Indiana,Atlantic Crest Conference
+Loess Hills College,Prairie Sentinels,South Iowa,Sunspire Conference
+Sunflower Basin College,Dust Devils,South Kansas,Sunspire Conference
+Cumberland Plateau College,Night Ravens,South Kentucky,Frontier Plains Conference
+Gulf Crescent College,Storm Pelicans,South Louisiana,Sunspire Conference
+Casco Bay College,Salt Clippers,South Maine,Atlantic Crest Conference
+Potomac Ridge College,Crimson Foxes,South Maryland,Sunspire Conference
+Cape Cod Institute,Sea Phantoms,South Massachusetts,Atlantic Crest Conference
+Great Lakes University,Alloy Spartans,South Michigan,Frontier Plains Conference
+Prairie Star College,Aurora Elk,South Minnesota,Frontier Plains Conference
+Magnolia Coast College,Pearl Sharks,South Mississippi,Sunspire Conference
+Ozark Border College,Ember Bears,South Missouri,Atlantic Crest Conference
+Yellowstone Valley College,Fire Bisons,South Montana,Frontier Plains Conference
+Cornhusker Plains University,Golden Cobs,South Nebraska,Atlantic Crest Conference
+Mojave Sun College,Solar Coyotes,South Nevada,Sunspire Conference
+Merrimack Crossing College,River Wardens,South New Hampshire,Atlantic Crest Conference
+Jersey Shore College,Breaker Marlins,South New Jersey,Sunspire Conference
+Rio Sol College,Ember Serpents,South New Mexico,Sunspire Conference
+Hudson Metro College,Alloy Titans,South New York,Atlantic Crest Conference
+Cape Fear College,Storm Anchors,South North Carolina,Sunspire Conference
+Prairie Crossing College,Thunder Larks,South North Dakota,Frontier Plains Conference
+Scioto Valley College,Flame Foxes,South Ohio,Atlantic Crest Conference
+Red Clay College,Forge Hornets,South Oklahoma,Sunspire Conference
+Rogue Valley College,Iron Pumas,South Oregon,Frontier Plains Conference
+Susquehanna College,River Paladins,South Pennsylvania,Sunspire Conference
+Narragansett College,Wave Griffins,South Rhode Island,Aurora Athletic Conference
+Palmetto Coast College,Tide Paladins,South South Carolina,Sunspire Conference
+Badlands Ridge Institute,Thunder Coyotes,South South Dakota,Aurora Athletic Conference
+Tennessee Valley College,River Centurions,South Tennessee,Sunspire Conference
+Lone Star Gulf College,Iron Vaqueros,South Texas,Sunspire Conference
+Redrock Basin College,Sun Drakes,South Utah,Frontier Plains Conference
+Maple Valley College,Amber Foxes,South Vermont,Atlantic Crest Conference
+Tidewater College,Harbor Tridents,South Virginia,Sunspire Conference
+Cascade Shore College,Storm Falcons,South Washington,Aurora Athletic Conference
+Kanawha Ridge College,Ember Mountaineers,South West Virginia,Frontier Plains Conference
+Driftless Valley College,Copper Stags,South Wisconsin,Frontier Plains Conference
+High Plains College,Thunder Pronghorns,South Wyoming,Frontier Plains Conference

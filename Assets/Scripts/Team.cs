@@ -9,19 +9,24 @@ public class Team
     public List<Player> startingPitchers;
     public List<Player> reliefPitchers;
     public List<Player> lineup;
+    public string collegeName;
     public string teamName;
     public string teamLocation;
     public int wins;
     public int losses;
     public int rosterSize;
 
+    public Conference conference;
+    public Team rival;
+    public Team oocRival;
 
     private int startingPitcherIndex;
     private int lineupIndex;
     private List<int> validNumbers;
 
-    public Team(string teamName, string teamLocation)
+    public Team(string collegeName, string teamName, string teamLocation)
     {
+        this.collegeName = collegeName;
         this.teamName = teamName;
         this.teamLocation = teamLocation;
         positionPlayers = new List<Player>();
@@ -33,11 +38,15 @@ public class Team
         losses = 0;
         rosterSize = 34;
 
+        //this.rival = rival;
+        //this.oocRival = oocRival;
+
         validNumbers = new List<int>();
         for (int i = 0; i < 100; i++)
         {
             validNumbers.Add(i);
         }
+
     }
 
 
@@ -112,6 +121,11 @@ public class Team
 
         }
         **/
+    }
+
+    public void updateLineup(List<Player> lineup)
+    {
+        this.lineup = lineup;
     }
 
     public void endGame()
@@ -612,6 +626,9 @@ public class Team
 
     public float getDefERA()
     {
+        if (getGamesPlayed() == 0)
+            return 0;
+
         return getTotalDefRuns() / (9 * getGamesPlayed());
     }
 }

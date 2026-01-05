@@ -13,8 +13,8 @@ public class PlayerInfoCanvasController : MonoBehaviour
     private Team playerTeam;
 
     // Team Info GUI
+    public TextMeshProUGUI collegeName;
     public TextMeshProUGUI teamName;
-    public TextMeshProUGUI teamLocation;
     public TextMeshProUGUI overallRating;
     public TextMeshProUGUI offenseRating;
     public TextMeshProUGUI defenseRating;
@@ -94,8 +94,8 @@ public class PlayerInfoCanvasController : MonoBehaviour
 
     public void setTeamInfo(Team team)
     {
+        collegeName.text = team.collegeName;
         teamName.text = team.teamName;
-        teamLocation.text = team.teamLocation;
         overallRating.text = "Overall: " + team.getOverallRating();
         offenseRating.text = "Offense: " + team.getOffenseRating();
         defenseRating.text = "Defense: " + team.getDefenseRating();

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MasterController : MonoBehaviour
@@ -9,6 +10,8 @@ public class MasterController : MonoBehaviour
     
     public GameController gameController;
     public PlayerGenerator playerGenerator;
+    public TeamGenerator teamGenerator;
+    public enum Conf { AAC, FPC, ACC, SSC }
 
     public TextMeshProUGUI oppInfoText;
 
@@ -17,91 +20,113 @@ public class MasterController : MonoBehaviour
     public GameObject mainCanvas;
     public GameObject teamInfo;
     public GameObject playerInfo;
+    public int seriesInASeason;
 
     public Team playerTeam;
     private Team oppTeam;
-    private List<Team> AITeams;
+    private Scheduler scheduler;
+    private List<Conference> conferences;
+    // Keeps track of how many games we have done in a bo3/bo1
+    private int currGameCount;
+
+    // Index of what series we are on
+    private int currSeriesNum;
 
     void Start()
     {
-        playerGenerator = new PlayerGenerator();
+        teamGenerator = new TeamGenerator(new PlayerGenerator());
+        conferences = teamGenerator.conferenceList;
 
-        AITeams = new List<Team>();    
-
-        playerTeam = new Team("Pandas", "UrMoms House");
-        AITeams.Add(new Team("Sharks", "The Ocean"));
-
-        createRoster(playerTeam);
-        createRoster(AITeams[0]);
-
-        oppTeam = AITeams[0];
-        getOppInfo(oppTeam);
-
+        currGameCount = 0;
+        currSeriesNum = 0;
+        scheduler = new Scheduler(seriesInASeason, conferences);
 
         //test();
-    }
 
+        // Player is just the first team in the first conference for now
+        playerTeam = conferences[0].teams[0];
+
+        scheduler.generateMatchups();
+
+        findNextOpponent();
+    }    
 
     public void test()
     {
-        Dictionary<float, int> counter = new Dictionary<float, int>();
-
-        for (int i = 0; i < 1000; i++)
+ 
+        foreach (Team team in conferences[0].teams)
         {
-            float temp = playerGenerator.generateBAAvgValue(0);
-            if (!counter.ContainsKey(temp))
-                counter.Add(temp, 0);
-            
-            counter[temp]++;
-        }
+            Debug.Log(team.teamName);
+        }  
+    }
 
-        var sortedKeys = counter.Keys.ToList();
-        sortedKeys.Sort();
+    public void findNextOpponent()
+    {
+        oppTeam = scheduler.findNextOpponent(playerTeam, currSeriesNum);
 
-        foreach (float key in sortedKeys)
-        {
-            Debug.Log(key + " : " + counter[key]);
-        }
+        getOppInfo(oppTeam);
     }
 
     public void startNextGame()
     {
-        gameController.startGame(playerTeam, oppTeam);
+        gameController.startGame(playerTeam, oppTeam, true);
         canvasController.swapCanvas(mainCanvas, gameCanvas);
     }
 
     public void gameFinished()
     {
-        getOppInfo(oppTeam);
+        simulateRestOfGames();
+
+        currGameCount++;
+
+        // We are in a conference game
+        if (currSeriesNum % 2 == 0)
+        {
+            // If we finished the Bo3 find the next Opponent
+            if (currGameCount == 3)
+            {
+                currSeriesNum++;
+                currGameCount = 0;
+                findNextOpponent();
+            }
+            // Else keep the same opponent
+            else
+            {
+                getOppInfo(oppTeam);
+            }
+        }
+        // OOC games are BO1s
+        else
+        {
+            currSeriesNum++;
+            currGameCount = 0;
+            findNextOpponent();
+        }
+
         canvasController.swapCanvas(gameCanvas, mainCanvas);
+    }
+
+    public void simulateRestOfGames()
+    {
+        List<(Team, Team)> games = scheduler.getNonPlayerMatchups(playerTeam, oppTeam, currSeriesNum);
+
+
+        foreach ((Team, Team) game in games)
+        {
+
+            // If either team is null then a BYE happened
+            if (game.Item1 == null || game.Item2 == null)
+                continue;
+
+            Debug.Log("Game Happn");
+
+            gameController.startGame(game.Item1, game.Item2, false);
+        }
     }
 
     public void getOppInfo(Team opp)
     {
-        oppInfoText.text = "Next opponent: " + opp.teamName + " (" + opp.wins + "-" + opp.losses + ")";
-    }
-
-    public void createRoster(Team team)
-    {
-        for (int i = 0; i < 24; i++)
-        {
-            team.addPlayer(playerGenerator.generatePlayer(team, false));
-        }
-
-        for (int i = 0; i < 10;  i++)
-        {
-            Player temp = playerGenerator.generatePlayer(team, true);
-
-            // Create 4 Starting Pitchers, 5 Relief Pitchers, and 1 Closer
-            if (i >= 0 && i <= 3)
-                temp.playerPos = Player.position.SP;
-            else if (i >= 4 && i <= 8)
-                temp.playerPos = Player.position.RP;
-            else
-                temp.playerPos = Player.position.CP;
-
-            team.addPlayer(temp);
-        }
+        oppInfoText.text = "Next opponent: " + opp.collegeName + " (" + opp.wins + "-" + opp.losses + ")";
     }
 
     public void openTeamInfo()

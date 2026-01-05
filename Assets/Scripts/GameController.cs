@@ -22,54 +22,90 @@ public class GameController : MonoBehaviour
     public GameObject playButtons;
     public GameObject backToMenu;
 
+    private bool playerGame;
     private bool inSimulation;
     private Team homeTeam;
     private Team awayTeam;
 
-    public void startGame(Team homeTeam,  Team awayTeam)
+    public void startGame(Team homeTeam,  Team awayTeam, bool playerGame)
     {
+        this.playerGame = playerGame;
         inSimulation = false;
 
-        if(inningDisplay != null) 
-            inningDisplay.text = "";
-
-        playButtons.SetActive(true);
-        backToMenu.SetActive(false);
+        
 
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
 
         currGame = new GameSequence(homeTeam, awayTeam);
-        updateBaseUI();
-    }
 
-    public void endGame()
-    {
-        inningDisplay.text = "Game over!\n";
-
-        if (currGame.getHomeScore() > currGame.getAwayScore())
+        if (playerGame)
         {
-            inningDisplay.text += homeTeam.teamName + " beat " + awayTeam.teamName + " " + currGame.getHomeScore() + " - " + currGame.getAwayScore() + "!\n";
-            homeTeam.wins++;
-            awayTeam.losses++;
+            if (inningDisplay != null)
+                inningDisplay.text = "";
+
+            playButtons.SetActive(true);
+            backToMenu.SetActive(false);
+            updateBaseUI();
+
         }
         else
         {
-            inningDisplay.text += awayTeam.teamName + " beat " + homeTeam.teamName + " " + currGame.getAwayScore() + " - " + currGame.getHomeScore() + "!\n";
-            homeTeam.losses++;
-            awayTeam.wins++;
+            simulateGame();
         }
 
-
-        inningDisplay.text += "Home Pitcher SOs: " + currGame.getHomePitcher().getGameOuts() + "\n";
-        inningDisplay.text += "Away Pitcher SOs: " + currGame.getAwayPitcher().getGameOuts() + "\n";
+    }
 
 
-        inningDisplay.text += formatMVPText(currGame.getMVP(homeTeam), homeTeam) + "\n";
-        inningDisplay.text += formatMVPText(currGame.getMVP(awayTeam), awayTeam) + "\n";
 
-        playButtons.SetActive(false);
-        backToMenu.SetActive(true);
+    public void endGame()
+    {
+        if (playerGame)
+        {
+            inningDisplay.text = "Game over!\n";
+
+            if (currGame.getHomeScore() > currGame.getAwayScore())
+            {
+                inningDisplay.text += homeTeam.teamName + " beat " + awayTeam.teamName + " " + currGame.getHomeScore() + " - " + currGame.getAwayScore() + "!\n";
+                homeTeam.wins++;
+                awayTeam.losses++;
+            }
+            else
+            {
+                inningDisplay.text += awayTeam.teamName + " beat " + homeTeam.teamName + " " + currGame.getAwayScore() + " - " + currGame.getHomeScore() + "!\n";
+                homeTeam.losses++;
+                awayTeam.wins++;
+            }
+
+
+            inningDisplay.text += "Home Pitcher SOs: " + currGame.getHomePitcher().getGameOuts() + "\n";
+            inningDisplay.text += "Away Pitcher SOs: " + currGame.getAwayPitcher().getGameOuts() + "\n";
+
+
+            inningDisplay.text += formatMVPText(currGame.getMVP(homeTeam), homeTeam) + "\n";
+            inningDisplay.text += formatMVPText(currGame.getMVP(awayTeam), awayTeam) + "\n";
+
+            playButtons.SetActive(false);
+            backToMenu.SetActive(true);
+        }
+        else
+        {
+            if (currGame.getHomeScore() > currGame.getAwayScore())
+            {
+                Debug.Log("Home Team wins!");
+                homeTeam.wins++;
+                awayTeam.losses++;
+            }
+            else
+            {
+                Debug.Log("Away Team wins!");
+                homeTeam.losses++;
+                awayTeam.wins++;
+            }
+
+            currGame.getMVP(homeTeam);
+            currGame.getMVP(awayTeam);
+        }
 
         homeTeam.endGame();
         awayTeam.endGame();
@@ -135,9 +171,17 @@ public class GameController : MonoBehaviour
                 clearUI();
             }
 
-            inningString += currGame.simmulateInningHalf();
+            if (playerGame)
+            {
+                inningString += currGame.simmulateInningHalf();
 
-            inningDisplay.text += inningString;
+                inningDisplay.text += inningString;
+            }
+            else
+            {
+                currGame.simmulateInningHalf();
+            }
+
             inSimulation = false;
             updateBaseUI();
         }

@@ -474,38 +474,6 @@ RectTransform:
   m_AnchoredPosition: {x: -269.7, y: 77.41}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &129746899
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 129746900}
-  m_Layer: 0
-  m_Name: MainScreen
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &129746900
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 129746899}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.32816, y: 0.69439, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1228738682}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &250674580
 GameObject:
   m_ObjectHideFlags: 0
@@ -2787,7 +2755,7 @@ GameObject:
   - component: {fileID: 1228738684}
   - component: {fileID: 1228738683}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: MainScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2810,7 +2778,7 @@ RectTransform:
   - {fileID: 586534215}
   - {fileID: 994106932}
   - {fileID: 856829677}
-  m_Father: {fileID: 129746900}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2952,9 +2920,10 @@ MonoBehaviour:
   oppInfoText: {fileID: 2085215386}
   canvasController: {fileID: 1247694038}
   gameCanvas: {fileID: 1773137306}
-  mainCanvas: {fileID: 129746899}
+  mainCanvas: {fileID: 0}
   teamInfo: {fileID: 856829676}
   playerInfo: {fileID: 1952183979}
+  seriesInASeason: 18
 --- !u!114 &1247694038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3050,7 +3019,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2096363083}
   m_Direction: 2
   m_Value: 1.0000001
-  m_Size: 0.1671391
+  m_Size: 0.16713907
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4516,6 +4485,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1228738682}
     m_Modifications:
+    - target: {fileID: 466394520588103889, guid: 965d278a22c36e842aadee6d4ba1c1c4, type: 3}
+      propertyPath: m_Value
+      value: 1.0000001
+      objectReference: {fileID: 0}
     - target: {fileID: 495853621863120455, guid: 965d278a22c36e842aadee6d4ba1c1c4, type: 3}
       propertyPath: masterController
       value: 
@@ -4618,7 +4591,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4653636404353269495, guid: 965d278a22c36e842aadee6d4ba1c1c4, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.45859873
+      value: 0.6282054
       objectReference: {fileID: 0}
     - target: {fileID: 5746144622914240538, guid: 965d278a22c36e842aadee6d4ba1c1c4, type: 3}
       propertyPath: m_AnchorMax.x
@@ -4654,4 +4627,4 @@ SceneRoots:
   - {fileID: 1247694036}
   - {fileID: 1749167086}
   - {fileID: 1773137307}
-  - {fileID: 129746900}
+  - {fileID: 1228738682}

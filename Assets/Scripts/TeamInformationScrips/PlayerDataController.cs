@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using static Unity.Collections.Unicode;
 using static UnityEngine.LowLevelPhysics2D.PhysicsLayers;
 
 public class PlayerDataController: MonoBehaviour
@@ -47,4 +48,26 @@ public class PlayerDataController: MonoBehaviour
         }
     }
 
+    public void updateShortText(int num, string playerName, string position, int overall, float battingAverage, int strikeOuts)
+    {
+        numberText.text = num.ToString();
+        nameText.text = playerName;
+        posText.text = position;
+        overallText.text = overall.ToString();
+        battingAverageText.text = string.Format("{0:#.000}", battingAverage);
+        strikeOutsText.text = strikeOuts.ToString();
+    }
+
+    public void updateShortText()
+    {
+        if (player != null)
+        {
+            numberText.text = player.number.ToString();
+            nameText.text = player.name;
+            posText.text = player.getPosition();
+            overallText.text = player.getOverall().ToString();
+            battingAverageText.text = string.Format("{0:#.000}", player.getCareerBA());
+            strikeOutsText.text = player.getCareerSO().ToString();
+        }
+    }
 }
