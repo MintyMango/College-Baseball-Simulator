@@ -601,7 +601,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 129af350123d03845b6b8c65542b3f78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInfoController
-  numberText: {fileID: 0}
+  numberText: {fileID: 401446174431608849}
   nameText: {fileID: 4058600207506800524}
   posText: {fileID: 2943765172918148473}
   overallText: {fileID: 3390663164968514504}

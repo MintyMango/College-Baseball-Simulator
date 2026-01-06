@@ -69,8 +69,16 @@ public class MasterController : MonoBehaviour
 
     public void startNextGame()
     {
-        gameController.startGame(playerTeam, oppTeam, true);
-        canvasController.swapCanvas(mainCanvas, gameCanvas);
+        if (playerTeam.getLineup().Count() == 9)
+        {
+            gameController.startGame(playerTeam, oppTeam, true);
+            canvasController.swapCanvas(mainCanvas, gameCanvas);
+        }
+        else
+        {
+            Debug.Log("Not enough players in lineup");
+            Debug.Log(playerTeam.getLineup().Count());
+        }
     }
 
     public void gameFinished()

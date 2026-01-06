@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using Unity.Hierarchy;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,8 @@ public class LineupEditorController : MonoBehaviour
     // Prefab for player info
     public GameObject rosterEntry;
     public GameObject lineupEntry;
+    public GameObject shortPlayerInfo;
+
 
     // Reference to the Scroll Rect that will hold the lineup players
     public GameObject lineupList;
@@ -23,19 +26,31 @@ public class LineupEditorController : MonoBehaviour
     public PlayerInfoCanvasController playerController;
     private Team playerTeam;
 
+    private bool opened = false;
 
-    public void Start()
+    public void activateCanvas()
     {
-        lineupIndex = new GameObject[9];
-        rosterIndex = new List<GameObject>();
 
-        playerTeam = masterController.playerTeam;
+        if (!opened)
+        {
+            lineupIndex = new GameObject[9];
+            rosterIndex = new List<GameObject>();
 
-        
-        createRosterList();
+            playerTeam = masterController.playerTeam;
+
+
+            initializeLineupIndex();
+            createRosterList();
+
+            opened = true;
+
+        }
 
         fillStartingLineup();
+
         fillRoster();
+
+        this.transform.gameObject.SetActive(true);
     }
 
     public void createRosterList()
@@ -47,6 +62,15 @@ public class LineupEditorController : MonoBehaviour
             temp.GetComponent<RectTransform>().anchorMin = new Vector2(0.5f, 0.5f);
             temp.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0.5f);
             rosterIndex.Add(temp);
+        }
+    }
+
+    public void initializeLineupIndex()
+    {
+        for(int i = 0; i < lineupIndex.Length; i++)
+        {
+  
+            lineupIndex[i] = lineupList.transform.GetChild(i).gameObject;
         }
     }
 
@@ -76,12 +100,16 @@ public class LineupEditorController : MonoBehaviour
         // Loop through the 9 lineup slots and grab the player reference to build a new lineup
         for (int i = 0; i < lineupIndex.Length;i++)
         {
+            if (lineupIndex[i].transform.GetChild(1).childCount == 0)
+                continue;
+
             PlayerDataController temp = getPlayerInfo(lineupIndex[i]).GetComponent<PlayerDataController>();
 
             newLineup.Add(temp.player);
         }
 
         playerTeam.updateLineup(newLineup);
+        this.transform.gameObject.SetActive(false);
     }
 
     // Fill the Roster spots so the player can choose who they want on the lineup
@@ -90,15 +118,24 @@ public class LineupEditorController : MonoBehaviour
         int i = 0;
         foreach (Player player in playerTeam.getRoster())
         {
-            if (player.playerPos == Player.position.SP || player.playerPos == Player.position.CP)
+            if (player.playerPos == Player.position.SP || player.playerPos == Player.position.CP || player.playerPos == Player.position.RP)
                 continue;
 
+            if (rosterIndex[i].transform.GetChild(1).childCount == 0)
+            {
+                GameObject temp = GameObject.Instantiate(shortPlayerInfo, rosterIndex[i].transform.GetChild(1).transform);
+
+                temp.GetComponent<RectTransform>().anchorMin = new Vector2(0.5f, 0.5f);
+                temp.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0.5f);
+            }
+
             updateInfo(rosterIndex[i], player);
+
             i++;
         }
 
         // Adjust the height of the list to fit the roster info
-        rosterList.GetComponent<RectTransform>().sizeDelta = new Vector2(600, 150 * i + 50);
+        rosterList.GetComponent<RectTransform>().sizeDelta = new Vector2(600, 150 * i + 250);
     }
 
     public void updateInfo(GameObject playerInfo, Player player)
