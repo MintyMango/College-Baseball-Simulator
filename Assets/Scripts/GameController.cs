@@ -27,19 +27,17 @@ public class GameController : MonoBehaviour
     private Team homeTeam;
     private Team awayTeam;
 
-    public void startGame(Team homeTeam,  Team awayTeam, bool playerGame)
+    public void startGame(Team homeTeam,  Team awayTeam, (bool, bool) playerGame)
     {
-        this.playerGame = playerGame;
+        this.playerGame = playerGame.Item1;
         inSimulation = false;
-
-        
 
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
 
-        currGame = new GameSequence(homeTeam, awayTeam);
+        currGame = new GameSequence(homeTeam, awayTeam, playerGame);
 
-        if (playerGame)
+        if (this.playerGame)
         {
             if (inningDisplay != null)
                 inningDisplay.text = "";
@@ -55,8 +53,6 @@ public class GameController : MonoBehaviour
         }
 
     }
-
-
 
     public void endGame()
     {

@@ -2100,6 +2100,35 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 541646232780574497, guid: 965d278a22c36e842aadee6d4ba1c1c4, type: 3}
   m_PrefabInstance: {fileID: 2226867097536065198}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &903409797 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7544512298169932931, guid: 965d278a22c36e842aadee6d4ba1c1c4, type: 3}
+  m_PrefabInstance: {fileID: 2226867097536065198}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &903409800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903409797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.GridLayoutGroup
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 1
+  m_StartCorner: 0
+  m_StartAxis: 1
+  m_CellSize: {x: 525, y: 130}
+  m_Spacing: {x: 0, y: 20}
+  m_Constraint: 0
+  m_ConstraintCount: 2
 --- !u!1 &1040467000
 GameObject:
   m_ObjectHideFlags: 0
@@ -2649,7 +2678,7 @@ MonoBehaviour:
   oppInfoText: {fileID: 2085215386}
   canvasController: {fileID: 1247694038}
   gameCanvas: {fileID: 1773137306}
-  mainCanvas: {fileID: 0}
+  mainCanvas: {fileID: 1228738681}
   teamInfo: {fileID: 856829676}
   playerInfo: {fileID: 1952183979}
   seriesInASeason: 18
@@ -2748,7 +2777,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2096363083}
   m_Direction: 2
   m_Value: 1.0000001
-  m_Size: 0.16713907
+  m_Size: 0.1671391
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4338,6 +4367,14 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0.6282054
       objectReference: {fileID: 0}
+    - target: {fileID: 5286057553478911338, guid: 965d278a22c36e842aadee6d4ba1c1c4, type: 3}
+      propertyPath: masterController
+      value: 
+      objectReference: {fileID: 1247694037}
+    - target: {fileID: 5286057553478911338, guid: 965d278a22c36e842aadee6d4ba1c1c4, type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 2827011}
     - target: {fileID: 5746144622914240538, guid: 965d278a22c36e842aadee6d4ba1c1c4, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -4361,7 +4398,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7544512298169932931, guid: 965d278a22c36e842aadee6d4ba1c1c4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 903409800}
   m_SourcePrefab: {fileID: 100100000, guid: 965d278a22c36e842aadee6d4ba1c1c4, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

@@ -8,6 +8,7 @@ public class Team
     public List<Player> positionPlayers;
     public List<Player> startingPitchers;
     public List<Player> reliefPitchers;
+    public List<Player> closingPitchers;
     public List<Player> lineup;
     public string collegeName;
     public string teamName;
@@ -32,6 +33,7 @@ public class Team
         positionPlayers = new List<Player>();
         startingPitchers = new List<Player>();
         reliefPitchers = new List<Player>();
+        closingPitchers = new List<Player>();
         lineup = new List<Player>();
         startingPitcherIndex = 0;
         wins = 0;
@@ -62,6 +64,9 @@ public class Team
                 break;
             case Player.position.RP:
                 reliefPitchers.Add(player);
+                break;
+            case Player.position.CP:
+                closingPitchers.Add(player);
                 break;
             default:
                 positionPlayers.Add(player); 
@@ -98,6 +103,13 @@ public class Team
     public Player getReliefPitcher()
     {
         Player temp = reliefPitchers[UnityEngine.Random.Range(0, reliefPitchers.Count)];
+        temp.startGame();
+        return temp;
+    }
+
+    public Player getClosingPitcher()
+    {
+        Player temp = closingPitchers[UnityEngine.Random.Range(0, closingPitchers.Count)];
         temp.startGame();
         return temp;
     }
@@ -144,6 +156,17 @@ public class Team
         this.lineup = lineup;
     }
 
+    public List<Player> getStartingPitchers()
+    {
+        return startingPitchers;
+    }
+
+    public void updateStartingRotation(List<Player> newStartingPitchers)
+    {
+        startingPitchers = newStartingPitchers;
+        startingPitcherIndex = 0;
+    }
+
     public void endGame()
     {
         foreach (Player player in lineup)
@@ -178,6 +201,12 @@ public class Team
         }
 
         foreach (Player player in reliefPitchers)
+        {
+            roster[tempIndex] = player;
+            tempIndex++;
+        }
+
+        foreach (Player player in closingPitchers)
         {
             roster[tempIndex] = player;
             tempIndex++;

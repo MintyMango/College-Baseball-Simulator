@@ -20,7 +20,7 @@ public class GameSequence
     private int outCount;
     private string inningResults;
 
-    public GameSequence(Team homeTeam, Team awayTeam)
+    public GameSequence(Team homeTeam, Team awayTeam, (bool, bool) isPlayerGame)
     {
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
@@ -32,11 +32,31 @@ public class GameSequence
         outCount = 0;
         inningResults = "";
 
+        
         homePitcher = homeTeam.getNextStartingPitcher();
         awayPitcher = awayTeam.getNextStartingPitcher();
 
-        homeTeam.generateLineup();
-        awayTeam.generateLineup();
+        // If this is a player game
+        if (isPlayerGame.Item1)
+        {
+            // If the player is the home team only generate the away lineup
+            if (isPlayerGame.Item2)
+            {
+                awayTeam.generateLineup();
+            }
+            // Else the player is the away team so only generate the home team
+            else
+            {
+                homeTeam.generateLineup();
+
+            }
+        }
+        else
+        {
+            homeTeam.generateLineup();
+            awayTeam.generateLineup();
+
+        }
 
         baseRunners = new Player[4];
     }

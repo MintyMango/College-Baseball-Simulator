@@ -71,7 +71,7 @@ public class MasterController : MonoBehaviour
     {
         if (playerTeam.getLineup().Count() == 9)
         {
-            gameController.startGame(playerTeam, oppTeam, true);
+            gameController.startGame(playerTeam, oppTeam, (true, true));
             canvasController.swapCanvas(mainCanvas, gameCanvas);
         }
         else
@@ -128,7 +128,7 @@ public class MasterController : MonoBehaviour
 
             Debug.Log("Game Happn");
 
-            gameController.startGame(game.Item1, game.Item2, false);
+            gameController.startGame(game.Item1, game.Item2, (false, false));
         }
     }
 

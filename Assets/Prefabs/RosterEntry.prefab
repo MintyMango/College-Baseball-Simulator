@@ -279,6 +279,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShortPlayerEntry
       objectReference: {fileID: 0}
+    - target: {fileID: 3033181885188789808, guid: cd044819c5c0ba84fa6261e6c8ae14f5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9186696998724865974, guid: cd044819c5c0ba84fa6261e6c8ae14f5, type: 3}
       propertyPath: numberText
       value: 
